@@ -106,6 +106,12 @@ public class MainActivity extends AppCompatActivity {
                 udpClient = new UDPClient(sIP, locationInfo);
                 //보내기 시작
                 udpClient.start();
+                try {
+                    udpClient.join();
+                } catch (InterruptedException e) {
+                    Log.d("@@@", e.getMessage());
+                    // 서버가 없다면(와이파이 잘못 연결, ip주소 잘못입력, 서버 안킴 등,,) -> UDP Client 수신 대기 상태 -> 쓰레드 종료 못함 -> 메인 쓰레드도 종료 못함 -> 에러
+                }
                 Toast.makeText(MainActivity.this, udpClient.getData() + " \n잘 받았나?", Toast.LENGTH_SHORT).show();
             }
         });

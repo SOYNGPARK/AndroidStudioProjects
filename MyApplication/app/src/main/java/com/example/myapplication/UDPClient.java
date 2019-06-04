@@ -13,7 +13,7 @@ public class UDPClient extends Thread{
     public static final int sPORT = 7777;
     String sIP;
     String locationInfo;
-    String msg;
+    String msg = "fail";
 
     public UDPClient(String sIP, String locationInfo) {
         this.sIP = sIP;
@@ -42,11 +42,18 @@ public class UDPClient extends Thread{
 
             Log.d("@@@", "send");
 
-            //데이터 수신 대기
-            socket.receive(packet);
-            //데이터 수신되었다면 문자열로 변환
-            msg = new String(packet.getData());
-            Log.d("@@@", "receive" + msg);
+            try {
+                //데이터 수신 대기
+
+
+
+                socket.receive(packet);
+                //데이터 수신되었다면 문자열로 변환
+                msg = new String(packet.getData());
+                Log.d("@@@", "receive" + msg);
+            } catch (Exception e) {
+                Log.d("@@@", e.getMessage());
+            }
 
         }catch (Exception e){
             Log.d("@@@", "에러?");
