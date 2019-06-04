@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">udp_test</string>
+    <string name="send_hello">Send Hello</string>
+    <string name="echo_text">Echo Text</string>
+    <string name="send">send</string>
+    <string name="ip">ip</string>
+    <string name="msg">msg</string>
+    <string name="accept">accept</string>
+</resources>
